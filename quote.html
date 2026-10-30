@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="th"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="icon" href="img/logo.png"><link rel="apple-touch-icon" href="img/logo.png"><meta name="theme-color" content="#2F7A25">
+<link rel="canonical" href="https://www.vpackaging.net/quote.html"><meta property="og:url" content="https://www.vpackaging.net/quote.html"><meta property="og:type" content="website"><meta property="og:site_name" content="V-pack วี แพค"><meta property="og:locale" content="th_TH">
+<title>ขอใบเสนอราคาสติกเกอร์ | V-pack</title><meta name="description" content="เลือกรูปทรง วัสดุ ขนาด จำนวน แล้วส่งสเปกให้แอดมินผ่าน Line หรือให้ทีมขายติดต่อกลับ">
+<meta property="og:title" content="ขอใบเสนอราคาสติกเกอร์ | V-pack"><meta property="og:description" content="เลือกรูปทรง วัสดุ ขนาด จำนวน แล้วส่งสเปกให้แอดมินผ่าน Line หรือให้ทีมขายติดต่อกลับ"><meta property="og:image" content="https://www.vpackaging.net/img/logo.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@400;500;600&family=Prompt:wght@500;600;700&display=swap">
+<link rel="stylesheet" href="style.css"></head><body>
+<div id="hd"></div>
+
+<section class="sec"><div class="w" style="max-width:720px"><h1>ขอใบเสนอราคา</h1>
+<form id="spec" onsubmit="return false"><label for="shape">รูปทรง</label><select id="shape"></select>
+<label for="mat">เนื้อวัสดุ</label><select id="mat"></select>
+<p style="margin:4px 0 0;font-size:14px"><a href="materials.html">ดูวัสดุที่รองรับทั้งหมด</a></p>
+<label for="w">ขนาด (มม.)</label><div style="display:flex;gap:8px"><input id="w" aria-label="กว้าง (มม.)" type="number" min="1" step="1" inputmode="numeric" placeholder="กว้าง (มม.)"><input id="h" aria-label="ยาว (มม.)" type="number" min="1" step="1" inputmode="numeric" placeholder="ยาว (มม.)"></div>
+<label for="qty">จำนวน (ชิ้น)</label><input id="qty" type="number" min="1" step="1" inputmode="numeric" list="ql" placeholder="พิมพ์จำนวนที่ต้องการ เช่น 1000"><datalist id="ql"></datalist>
+<label for="note">หมายเหตุ</label><input id="note" placeholder="เช่น ต้องการเคลือบด้าน, แบบม้วน แกน 3 นิ้ว"></form>
+<div class="sum" id="sum"></div>
+<button class="btn r" id="send">ส่งสเปกขอราคาผ่าน Line</button> <button class="btn" id="again">คัดลอกอีกครั้ง</button>
+<p class="msg" id="cm"></p><p>ระบบจะคัดลอกสเปกและเปิด Line OA ให้ กรุณากดวางข้อความในแชทเพื่อส่งให้แอดมิน พร้อมส่งไฟล์ artwork ของคุณมาด้วย (ทางเราไม่รับออกแบบ) เราจะทำแบบให้ยืนยันก่อนผลิต</p>
+<hr style="margin:40px 0"><h2 id="b2bf">ลูกค้าองค์กร ให้ทีมขายติดต่อกลับ</h2>
+<form id="b2b"><input class="hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true"><label for="bn">ชื่อ-นามสกุล</label><input id="bn" required autocomplete="name"><label for="bp">เบอร์โทร</label><input id="bp" type="tel" inputmode="tel" required autocomplete="tel" placeholder="เช่น 0812345678"><label for="bc">ชื่อบริษัท</label><input id="bc" autocomplete="organization"><label for="bd">รายละเอียดงานและปริมาณโดยประมาณ</label><textarea id="bd" rows="3"></textarea>
+<p><button class="btn g" type="submit">ส่งข้อมูลให้ทีมขาย</button></p><p class="msg" id="bm"></p></form></div></section>
+<div id="ft"></div>
+<script src="main.js"></script></body></html>
