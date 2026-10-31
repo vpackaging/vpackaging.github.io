@@ -279,3 +279,74 @@ body{line-height:1.75}
 .card:hover .pimg,[data-cat]:hover .pimg{transform:none}
 /* ป้ายเล็ก (tag) แบบป้ายไดคัท */
 .tag{border:1.5px dashed rgba(47,122,37,.45)}
+
+/* ================= ชุดสี v5: ขาว/เทาสว่าง 60% · ชาร์โคล 30% · แดง 5% · เขียว 5% ================= */
+/* ===== ชุดสีใหม่: ขาว/เทาสว่าง 60% · ชาร์โคล 30% · แดง 5% · เขียว 5% ===== */
+html:root{--bg:#FFFFFF;--bg2:#F8F9FA;--char:#252F3F;--red:#C7312F;--red-d:#A82624;--grn:#3EA84E;--grn-d:#31903F;
+ --v-ink:#252F3F;--v-text:#4A5363;--v-mute:#6B7382;--ink:#252F3F;--ink-2:#4A5363;--board:#F8F9FA;--die:#C7312F;--guide:#3EA84E;--v-red:#C7312F;--v-red-d:#A82624;--v-green:#3EA84E}
+html body,bodyhtml:root{background:#F8F9FA;color:#252F3F}
+/* หัวข้อ: ชาร์โคลล้วน ไม่ไล่สีเขียว */
+html h1,html h2,html .hero2 h1 span,html .hero2 .sl:not(.s1) h1{background:none!important;-webkit-text-fill-color:#252F3F!important;color:#252F3F!important}
+html .reveal span{-webkit-text-fill-color:#252F3F!important}
+/* เมนู */
+html nav a{color:#252F3F}
+html nav a:hover,html nav a.c0:hover,html nav a.c1:hover,html nav a.c2:hover,html nav a.c3:hover{background:#EEF0F3;color:#252F3F}
+html nav a.on,html nav a.c0.on,html nav a.c1.on,html nav a.c2.on,html nav a.c3.on{background:#252F3F;color:#fff}
+/* ส่วนแรก: เทาสว่าง ไม่มีวงเขียว */
+html .hero.hero2{background:#F8F9FA!important}
+html .hero.hero2::before{background:radial-gradient(circle,rgba(37,47,63,.06),transparent 68%)}
+html .stage::before,html .vis:before{background:radial-gradient(circle at 30% 28%,#FFFFFF,#E9ECEF)!important;opacity:1}
+html .stage::after,html .vis:after{border-color:rgba(37,47,63,.18)!important}
+html .dots button{background:rgba(37,47,63,.2)}html .dots button.on{background:#252F3F}
+html .guides line,html .guides circle{stroke:#3EA84E}
+html .an{stroke:#3EA84E}
+/* ปุ่ม */
+html .btn{border-color:#252F3F;color:#252F3F}
+html .btn:hover{background:#EEF0F3}
+html .btn.r{background:#C7312F;border-color:#C7312F;color:#fff}
+html .btn.r:hover{background:#A82624;border-color:#A82624}
+html .btn.g{background:#252F3F;border-color:#252F3F;color:#fff}
+/* ปุ่ม Line = เขียว */
+html a.btn[href*="line.me"]{background:#3EA84E;border-color:#3EA84E;color:#fff}
+html a.btn[href*="line.me"]:hover{background:#31903F;border-color:#31903F}
+html .btn.r.fl{background:#3EA84E;box-shadow:0 8px 20px rgba(62,168,78,.35)}
+/* ไอคอนขั้นตอน/บริการ = เขียว */
+html .qb .ico{background:#E8F5EA;color:#3EA84E}
+@media(hover:hover){html .qb:hover .ico{background:#3EA84E;color:#fff}html .qb:hover{border-color:#3EA84E}}
+html .qb a{text-decoration-color:#C7312F;color:#252F3F}
+html .extra{border-color:#3EA84E}
+/* แผ่นงาน */
+html .sheet{background:#fff}
+html .backing{background:#F8F9FA}
+/* ท้ายเว็บ = ชาร์โคล */
+html .cta2{background:#252F3F}
+html .cta2::after{background:radial-gradient(circle,rgba(255,255,255,.08),transparent 70%)}
+html .cta2 h2{-webkit-text-fill-color:#fff!important;color:#fff!important}
+html .cta2 p,html .cta2 footer p{color:#C5CBD4}
+
+/* ---- หน้าย่อย ---- */
+html #hd + section.sec,html #hd + .ab-hero{background:#F8F9FA}
+html #hd + section.sec::before{background:radial-gradient(circle,rgba(37,47,63,.06),transparent 68%)}
+html .ab-hero{background:#F8F9FA}
+html footer{background:#252F3F}
+html .band{background:#252F3F}
+html .band:before{background:radial-gradient(circle,rgba(255,255,255,.08),transparent 70%)}
+html .band h2{-webkit-text-fill-color:#fff!important;color:#fff!important}
+html .band p{color:#C5CBD4}
+html .band .btn:not(.r):not([href*="line.me"]){background:transparent;color:#fff;border-color:rgba(255,255,255,.75)}
+html .cta2 .btn:not(.r):not([href*="line.me"]){background:transparent;color:#fff;border-color:rgba(255,255,255,.75)}
+html .tag{background:#EEF0F3;color:#252F3F;border-color:rgba(37,47,63,.3)}
+html .tabs button{border-color:#252F3F;color:#252F3F}
+html .tabs button:hover{background:#EEF0F3}
+html .tabs button.on{background:#252F3F;color:#fff}
+html a{color:#252F3F}
+html .card > a:not(.btn),html .msg{color:#252F3F}
+html .card > a:not(.btn){text-decoration:underline;text-decoration-color:#C7312F;text-underline-offset:4px}
+html .ico{background:#E8F5EA;color:#3EA84E}
+html .svc:hover .ico{background:#3EA84E;color:#fff}
+html .sum{background:#F8F9FA;border-color:#B9C0CA}
+html #lb{background:rgba(37,47,63,.94)}
+html .up-flow .to{background:#252F3F;border-color:#252F3F}
+html footer a,html .cta2 footer a{color:#fff}
+html input:focus,html select:focus,html textarea:focus{border-color:#3EA84E;box-shadow:0 0 0 4px rgba(62,168,78,.15)}
+html a:focus-visible,html button:focus-visible{outline-color:#3EA84E}
