@@ -39,7 +39,8 @@ var ci=0;function L(h,t,on){return '<a class="c'+(ci++%4)+(on?' on':'')+'" href=
 document.getElementById('hd').innerHTML='<header><div class="w hb"><a href="index.html"><img src="img/logo.png" alt="V-pack วี แพค" width="90" height="46"></a><button id="mb" type="button" aria-label="เปิดเมนู" aria-expanded="false" aria-controls="nv">☰</button><nav id="nv" aria-label="เมนูหลัก">'+P.map(function(p){return p[0]=='services.html'?'<div class="dd">'+L(p[0],p[1],p[0]==cur||S.some(function(s){return s[0]==cur}))+'<div class="sub">'+S.map(function(s){return L(s[0],s[1],s[0]==cur)}).join('')+'</div></div>':L(p[0],p[1],p[0]==cur)}).join('')+'</nav><a class="btn r" href="'+CFG.line+'" target="_blank" rel="noopener">ขอราคาผ่าน Line</a></div></header>';
 
 /* ===== ท้ายเว็บ ===== */
-document.getElementById('ft').innerHTML='<footer><div class="w grid"><div><h3>บริษัท วี แพค การพิมพ์และบรรจุภัณฑ์ จำกัด</h3><p>'+CFG.addr+'</p><p style="margin-top:12px"><b>'+CFG.enName+'</b><br>'+CFG.enTax+'<br>'+CFG.enAddr+'</p></div><div><h3>ติดต่อ</h3><p>โทร <a href="tel:'+CFG.telLink+'">'+CFG.tel1+'</a>, <a href="tel:'+CFG.tel2Link+'">'+CFG.tel2+'</a><br>อีเมล <a href="mailto:'+CFG.mail+'">'+CFG.mail+'</a><br>Line OA <a href="'+CFG.line+'" target="_blank" rel="noopener">'+CFG.lineId+'</a></p><p>เวลาทำการ '+CFG.hours+'</p></div><div><h3>เมนู</h3>'+P.concat(S).map(function(p){return '<a href="'+p[0]+'">'+p[1]+'</a><br>'}).join('')+'<a href="materials.html">วัสดุที่รองรับ</a><br><a href="egat-label.html">ฉลากประหยัดไฟเบอร์ 5</a><br><a href="csr.html">กิจกรรมเพื่อสังคม</a><br></div></div></footer><a class="btn r fl" href="'+CFG.line+'" target="_blank" rel="noopener" aria-label="ทัก Line '+CFG.lineId+'">ทัก Line</a>';
+var hasBand=!!document.querySelector('section.band');
+document.getElementById('ft').innerHTML='<section class="cta2">'+(hasBand?'':'<div class="cta2-in"><h2>ส่งสเปกมา แอดมินแจ้งราคาให้</h2><p>บอกวัสดุ ขนาด และจำนวน พร้อมไฟล์งาน ทาง Line หรือโทรคุยได้เลย</p><div class="acts"><a class="btn r" href="'+CFG.line+'" target="_blank" rel="noopener">ทัก Line '+CFG.lineId+'</a><a class="btn" href="tel:'+CFG.telLink+'">โทร '+CFG.tel1+'</a></div></div>')+'<footer><div class="w grid"><div><h3>บริษัท วี แพค การพิมพ์และบรรจุภัณฑ์ จำกัด</h3><p>'+CFG.addr+'</p><p style="margin-top:12px"><b>'+CFG.enName+'</b><br>'+CFG.enTax+'<br>'+CFG.enAddr+'</p></div><div><h3>ติดต่อ</h3><p>โทร <a href="tel:'+CFG.telLink+'">'+CFG.tel1+'</a>, <a href="tel:'+CFG.tel2Link+'">'+CFG.tel2+'</a><br>อีเมล <a href="mailto:'+CFG.mail+'">'+CFG.mail+'</a><br>Line OA <a href="'+CFG.line+'" target="_blank" rel="noopener">'+CFG.lineId+'</a></p><p>เวลาทำการ '+CFG.hours+'</p></div><div><h3>เมนู</h3>'+P.concat(S).map(function(p){return '<a href="'+p[0]+'">'+p[1]+'</a><br>'}).join('')+'<a href="materials.html">วัสดุที่รองรับ</a><br><a href="egat-label.html">ฉลากประหยัดไฟเบอร์ 5</a><br><a href="csr.html">กิจกรรมเพื่อสังคม</a><br></div></div></footer></section><a class="btn r fl" href="'+CFG.line+'" target="_blank" rel="noopener" aria-label="ทัก Line '+CFG.lineId+'">ทัก Line</a>';
 
 /* ===== เมนูมือถือ: เปิด/ปิด และปิดเมื่อแตะนอกเมนู ===== */
 (function(){var mb=document.getElementById('mb'),nv=document.getElementById('nv');
@@ -55,9 +56,9 @@ document.addEventListener('click',function(e){var a=e.target.closest&&e.target.c
 /* ===== สไลด์หน้าแรก: หยุดเมื่อเอาเมาส์ชี้หรือกด Tab เข้าไป ===== */
 var s=document.querySelectorAll('.sl');if(s.length){var i=0,t=null,d=document.getElementById('dots'),hero=document.querySelector('.hero'),rm=matchMedia('(prefers-reduced-motion:reduce)').matches;
  s.forEach(function(_,n){var b=document.createElement('button');b.type='button';b.setAttribute('aria-label','สไลด์ '+(n+1));b.onclick=function(){go(n);start()};d.appendChild(b)});
- function go(n){i=n;s.forEach(function(e,k){var on=k==n;e.classList.toggle('on',on);d.children[k].classList.toggle('on',on);if(on)d.children[k].setAttribute('aria-current','true');else d.children[k].removeAttribute('aria-current')})}
- function stop(){clearInterval(t);t=null}
- function start(){stop();if(!rm)t=setInterval(function(){go((i+1)%s.length)},6000)}
+ function go(n){i=n;document.dispatchEvent(new CustomEvent('slide',{detail:n}));s.forEach(function(e,k){var on=k==n;e.classList.toggle('on',on);d.children[k].classList.toggle('on',on);if(on)d.children[k].setAttribute('aria-current','true');else d.children[k].removeAttribute('aria-current')})}
+ function stop(){clearTimeout(t);t=null}
+ function start(){stop();if(!rm)t=setTimeout(function(){go((i+1)%s.length);start()},s[i].classList.contains('s1')?9000:6000)}
  go(0);start();
  hero.addEventListener('mouseenter',stop);hero.addEventListener('mouseleave',start);
  hero.addEventListener('focusin',stop);hero.addEventListener('focusout',start)}
@@ -110,7 +111,7 @@ var f=document.getElementById('spec');if(f){
 
 /* ===== กันตัดคำกลางคำ: คำที่เบราว์เซอร์ตัดผิดบ่อยจะไม่ถูกตัดกลางคำ ===== */
 (function(){var W=/(สติกเกอร์|ไดคัท|ออนไลน์|ฟอยล์|ดิจิทัล)/,t=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT),a=[],n;
- while(n=t.nextNode()){if(!/^(SCRIPT|STYLE|TEXTAREA|OPTION)$/.test(n.parentNode.tagName)&&W.test(n.nodeValue))a.push(n)}
+ while(n=t.nextNode()){var pe=n.parentNode;if(!/^(SCRIPT|STYLE|TEXTAREA|OPTION|text|tspan)$/.test(pe.tagName)&&!(pe.closest&&pe.closest('svg,.reveal'))&&W.test(n.nodeValue))a.push(n)}
  a.forEach(function(n){var f=document.createDocumentFragment();n.nodeValue.split(new RegExp(W.source,'g')).forEach(function(p,i){
   if(i%2){var s=document.createElement('span');s.className='nb';s.textContent=p;f.appendChild(s)}else f.appendChild(document.createTextNode(p))});
   n.parentNode.replaceChild(f,n)})})();
@@ -128,3 +129,7 @@ var f=document.getElementById('spec');if(f){
 
 /* ===== โหลดภาพสไลด์ที่ซ่อนอยู่ล่วงหน้า ไม่ให้กระพริบตอนสไลด์เปลี่ยน ===== */
 window.addEventListener('load',function(){document.querySelectorAll('.sl img').forEach(function(im){var p=new Image();p.src=im.getAttribute('src')})});
+
+/* ===== กดปุ่มแล้ว "ปั๊มไดคัท" ===== */
+document.addEventListener('pointerdown',function(e){var b=e.target.closest&&e.target.closest('.btn');if(!b||matchMedia('(prefers-reduced-motion:reduce)').matches)return;
+ b.classList.remove('punch');void b.offsetWidth;b.classList.add('punch');var d=document.createElement('i');d.className='diecut';b.appendChild(d);setTimeout(function(){d.remove();b.classList.remove('punch')},450)});

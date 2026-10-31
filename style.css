@@ -1,4 +1,4 @@
-/* V-pack UI v3: Modern Premium (white/light-grey base, brand green accents, logo-red CTA) */
+/* V-pack UI v4: ธีมไดคัท (Prompt + Noto Sans Thai, เส้นไดคัทแดง, CMYK) */
 :root{
 --v-green:#2F7A25;--v-green-2:#4DA535;--v-green-l:#E8F6E1;--v-green-m:#CBEBBF;
 --v-red:#D92332;--v-red-d:#B01826;
@@ -234,3 +234,48 @@ nav a.c3.on{background:var(--v-bk);color:#fff}
 
 /* ข้อความรองใต้หัวข้อหน้าเกี่ยวกับเรา */
 .ab-lead{font:600 clamp(18px,2vw,22px)/1.5 'Prompt','Noto Sans Thai',sans-serif;color:var(--v-ink);margin:-4px 0 18px}
+
+/* ================= ธีมใหม่ v4 ================= */
+:root{--die:#D92332;--ink:#1C2228;--ink-2:#4A545D;--rule:#D3D8DC;--f-head:'Prompt','Noto Sans Thai',sans-serif;--f-body:'Noto Sans Thai',sans-serif;--f-note:'IBM Plex Mono','Noto Sans Thai',monospace}
+body{line-height:1.75}
+/* เมนู: หน้าปัจจุบันขีดเส้นแดงด้านล่าง */
+/* ปุ่ม: กดแล้ว "ปั๊ม" มีเส้นไดคัทบีบเข้ามา */
+.btn{display:inline-flex;vertical-align:top;align-items:center;justify-content:center;gap:8px;border-radius:10px;overflow:visible;font:600 16px/1.3 var(--f-body);padding:13px 24px}
+.btn:hover{transform:translateY(-2px)}
+.btn.r{background:var(--v-red)}.btn.r:hover{background:var(--v-red-d)}
+.btn.r:after{display:none}
+.btn::before{pointer-events:none}
+.btn.punch{animation:press .32s ease}
+.btn .diecut{content:'';display:block!important;position:absolute;inset:-9px;border:2px dashed var(--die);border-radius:16px;pointer-events:none;animation:die .42s ease-out forwards;background:none;transform:none;left:auto;top:auto;width:auto;height:auto}
+@keyframes press{0%{transform:none}35%{transform:translateY(3px) scale(.96)}100%{transform:none}}
+@keyframes die{0%{opacity:1;inset:-14px}60%{opacity:1;inset:-3px}100%{opacity:0;inset:-1px}}
+.btn.r.fl{animation:none}
+.btn.r.fl.punch{animation:press .32s ease}
+/* ภาพผลงาน: กรอบเส้นไดคัท */
+.pimg{border-radius:18px}
+/* ---------- CTA + ท้ายเว็บสีเขียวเข้ม ---------- */
+.cta2{position:relative;background:#10230F;color:#B9C9C1;overflow:hidden}
+.cta2::before{content:'';position:absolute;left:0;right:0;top:0;height:8px;background:linear-gradient(90deg,#00A0E3 0 25%,#E4007C 25% 50%,#FFD400 50% 75%,#C9CED1 75%)}
+.cta2::after{content:'';position:absolute;width:520px;height:520px;right:-140px;top:-260px;border-radius:50%;background:radial-gradient(circle,rgba(96,192,64,.25),transparent 70%);pointer-events:none}
+.cta2-in{position:relative;z-index:1;max-width:1120px;margin:auto;padding:clamp(56px,7vw,90px) 22px 48px;text-align:center;border-bottom:1px solid rgba(255,255,255,.12)}
+.cta2 h2{margin-left:auto;margin-right:auto;background:none;-webkit-text-fill-color:#fff;color:#fff}
+.cta2 h2:after{margin-left:auto;margin-right:auto;background:url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='148'%20height='26'%3E%3Cg%20font-family='Courier%20New%2CCourier%2Cmonospace'%20font-size='13'%20font-weight='bold'%20text-anchor='middle'%3E%3Ctext%20x='18.5'%20y='13'%20fill='%231E9FD4'%3EC%3C/text%3E%3Ctext%20x='55.5'%20y='13'%20fill='%23D81B7A'%3EM%3C/text%3E%3Ctext%20x='92.5'%20y='13'%20fill='%23F2B01E'%3EY%3C/text%3E%3Ctext%20x='129.5'%20y='13'%20fill='%23C9CED1'%3EK%3C/text%3E%3C/g%3E%3Crect%20x='0'%20y='20'%20width='37'%20height='5'%20fill='%231E9FD4'/%3E%3Crect%20x='37'%20y='20'%20width='37'%20height='5'%20fill='%23D81B7A'/%3E%3Crect%20x='74'%20y='20'%20width='37'%20height='5'%20fill='%23F2B01E'/%3E%3Crect%20x='111'%20y='20'%20width='37'%20height='5'%20fill='%23C9CED1'/%3E%3C/svg%3E") no-repeat center top/148px 26px}
+.cta2 p{color:#C3D0C8}
+.cta2 .acts{display:flex;flex-wrap:wrap;gap:14px;justify-content:center}.cta2 .acts .btn{margin:0}
+.cta2 .btn:not(.r){background:transparent;color:#fff;border-color:rgba(255,255,255,.75)}.cta2 .btn:not(.r):hover{background:rgba(255,255,255,.1)}
+.cta2 footer{background:none;padding:40px 0 100px}
+.cta2 footer:before{display:none}
+/* ถ้าหน้านั้นมีแถบชวนติดต่อของตัวเองแล้ว (section.band) ให้แถบท้ายเว็บชิดกัน */
+.band + #ft .cta2::before{display:none}
+
+/* ---------- หน้าย่อย: ส่วนหัวหน้าแบบเดียวกับหน้าแรก ---------- */
+#hd + section.sec,#hd + .ab-hero{position:relative;overflow:hidden;background:linear-gradient(180deg,#fff 0%,#F2F5F1 100%)}
+#hd + section.sec::before{content:"";position:absolute;right:-12%;top:-40%;width:55%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,rgba(96,192,64,.18),transparent 68%);pointer-events:none}
+#hd + section.sec::after,#hd + .ab-hero::after{content:"";position:absolute;left:0;right:0;bottom:0;height:6px;background:linear-gradient(90deg,#00A0E3 0 25%,#E4007C 25% 50%,#FFD400 50% 75%,#1C2228 75%)}
+#hd + section.sec > .w{position:relative}
+/* ภาพ: กรอบเส้นไดคัทแดง ชี้แล้วยกลอกเหมือนสติกเกอร์ */
+.pimg{outline:2px dashed rgba(217,35,50,.55);outline-offset:6px;border-color:#fff}
+@media(hover:hover){.pimg:hover{transform:translate(-4px,-7px) rotate(-1.5deg)}}
+.card:hover .pimg,[data-cat]:hover .pimg{transform:none}
+/* ป้ายเล็ก (tag) แบบป้ายไดคัท */
+.tag{border:1.5px dashed rgba(47,122,37,.45)}
