@@ -350,3 +350,21 @@ html .up-flow .to{background:#252F3F;border-color:#252F3F}
 html footer a,html .cta2 footer a{color:#fff}
 html input:focus,html select:focus,html textarea:focus{border-color:#3EA84E;box-shadow:0 0 0 4px rgba(62,168,78,.15)}
 html a:focus-visible,html button:focus-visible{outline-color:#3EA84E}
+/* แตะการ์ดบนจอสัมผัส */
+@keyframes tapb{0%{transform:none}35%{transform:perspective(700px) rotateX(var(--rx,0)) rotateY(var(--ry,0)) scale(.96)}70%{transform:perspective(700px) scale(1.02)}100%{transform:none}}
+html .tapb{animation:tapb .55s cubic-bezier(.3,1.4,.5,1)}
+@media(hover:none){html .card:hover,html .qb:hover,html .card.svc:hover,html .pimg:hover,html .fimg:hover{transform:none}}
+
+/* หน้าพิมพ์ดิจิทัล: ข้อความซ้าย ภาพเครื่อง Ricoh ขวา */
+.dg-hero{display:grid;grid-template-columns:1.15fr 1fr;gap:clamp(24px,4vw,56px);align-items:center}
+.dg-pic{margin:0;background:linear-gradient(180deg,#E6E6E6,#F4F4F4);border-radius:18px;overflow:hidden;box-shadow:0 18px 40px rgba(20,30,40,.12)}
+.dg-pic img{display:block;width:100%;height:auto}
+.dg-pic figcaption{padding:10px 16px 14px;font-size:14px;color:#5B6573;background:#fff}
+@media(max-width:860px){.dg-hero{grid-template-columns:1fr}.dg-pic{max-width:460px;margin:auto}}
+
+/* ระบบ Offset: ซ่อนไว้จนกว่าจะเปิดใน main.js (offset:true) */
+html:not(.offset-on) [data-offset]{display:none!important}
+.offset-on .qbs{grid-template-columns:repeat(4,1fr)}
+@media(max-width:1100px){.offset-on .qbs{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:760px){.offset-on .qbs{grid-template-columns:1fr}}
+.ph-img{display:grid;place-items:center;aspect-ratio:16/10;border:2px dashed #C7312F;border-radius:14px;color:#5B6573;font-size:15px;background:#F8F9FA}

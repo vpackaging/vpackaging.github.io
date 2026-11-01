@@ -1,5 +1,8 @@
 /* ===== ตั้งค่าที่แก้เองได้ที่นี่ที่เดียว ===== */
 var CFG={
+ /* ระบบ Offset (เครื่องใหม่ปีหน้า): false = ซ่อนไว้ก่อน  เปลี่ยนเป็น true เมื่อพร้อมโชว์บนเว็บ
+    ดูตัวอย่างก่อนเปิดจริง: ใส่ ?offset=1 ต่อท้ายลิงก์ เช่น vpackaging.github.io/?offset=1 */
+ offset:false,
  line:'https://line.me/R/ti/p/@vpackprinting', lineId:'@vpackprinting',
  tel1:'02-641-6835', tel2:'02-641-6836', telLink:'026416835', tel2Link:'026416836',
  saleMail:'sale@vpackaging.net', mail:'info@vpackaging.net',
@@ -111,7 +114,7 @@ var f=document.getElementById('spec');if(f){
 
 /* ===== กันตัดคำกลางคำ: คำที่เบราว์เซอร์ตัดผิดบ่อยจะไม่ถูกตัดกลางคำ ===== */
 (function(){var W=/(สติกเกอร์|ไดคัท|ออนไลน์|ฟอยล์|ดิจิทัล)/,t=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT),a=[],n;
- while(n=t.nextNode()){var pe=n.parentNode;if(!/^(SCRIPT|STYLE|TEXTAREA|OPTION|text|tspan)$/.test(pe.tagName)&&!(pe.closest&&pe.closest('svg,.reveal'))&&W.test(n.nodeValue))a.push(n)}
+ while(n=t.nextNode()){var pe=n.parentNode;if(!/^(SCRIPT|STYLE|TEXTAREA|OPTION|text|tspan)$/.test(pe.tagName)&&!(pe.closest&&pe.closest('svg,.reveal,.panel'))&&W.test(n.nodeValue))a.push(n)}
  a.forEach(function(n){var f=document.createDocumentFragment();n.nodeValue.split(new RegExp(W.source,'g')).forEach(function(p,i){
   if(i%2){var s=document.createElement('span');s.className='nb';s.textContent=p;f.appendChild(s)}else f.appendChild(document.createTextNode(p))});
   n.parentNode.replaceChild(f,n)})})();
@@ -133,3 +136,23 @@ window.addEventListener('load',function(){document.querySelectorAll('.sl img').f
 /* ===== กดปุ่มแล้ว "ปั๊มไดคัท" ===== */
 document.addEventListener('pointerdown',function(e){var b=e.target.closest&&e.target.closest('.btn');if(!b||matchMedia('(prefers-reduced-motion:reduce)').matches)return;
  b.classList.remove('punch');void b.offsetWidth;b.classList.add('punch');var d=document.createElement('i');d.className='diecut';b.appendChild(d);setTimeout(function(){d.remove();b.classList.remove('punch')},450)});
+
+/* มือถือ/แท็บเล็ต: แตะการ์ดแล้วยุบ เอียงไปทางจุดที่แตะ แล้วเด้งกลับ (แทนเอฟเฟกต์เม้าส์) */
+(function(){
+ if(matchMedia('(prefers-reduced-motion:reduce)').matches)return;
+ var SEL='.card,.qb,.stk,.pimg,.fimg,.fc,[data-cat],.mocks figure',sx=0,sy=0;
+ document.addEventListener('pointerdown',function(e){sx=e.clientX;sy=e.clientY},{passive:true});
+ document.addEventListener('pointerup',function(e){
+  if(e.pointerType=='mouse'||Math.abs(e.clientX-sx)>10||Math.abs(e.clientY-sy)>10)return;
+  var c=e.target.closest&&e.target.closest(SEL);if(!c)return;
+  var r=c.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;
+  c.style.setProperty('--rx',(-y*10)+'deg');c.style.setProperty('--ry',(x*12)+'deg');
+  c.classList.remove('tapb');void c.offsetWidth;c.classList.add('tapb');
+  setTimeout(function(){c.classList.remove('tapb')},600)},{passive:true});
+})();
+
+/* เปิด-ปิดเนื้อหาระบบ Offset (ทุกอย่างที่มี data-offset) */
+(function(){var q=/[?&]offset=1/.test(location.search);
+ try{if(q)sessionStorage.setItem('offset','1')}catch(e){}
+ var on=CFG.offset||q;try{on=on||sessionStorage.getItem('offset')=='1'}catch(e){}
+ if(on)document.documentElement.classList.add('offset-on')})();
