@@ -15,7 +15,17 @@
 <p style="margin:4px 0 0;font-size:14px"><a href="materials.html">ดูวัสดุที่รองรับทั้งหมด</a></p>
 <label for="w">ขนาด (มม.)</label><div style="display:flex;gap:8px"><input id="w" aria-label="กว้าง (มม.)" type="number" min="1" step="1" inputmode="numeric" placeholder="กว้าง (มม.)"><input id="h" aria-label="ยาว (มม.)" type="number" min="1" step="1" inputmode="numeric" placeholder="ยาว (มม.)"></div>
 <label for="qty">จำนวน (ชิ้น)</label><input id="qty" type="number" min="1" step="1" inputmode="numeric" list="ql" placeholder="พิมพ์จำนวนที่ต้องการ เช่น 1000"><datalist id="ql"></datalist>
-<label for="note">หมายเหตุ</label><input id="note" placeholder="เช่น ต้องการเคลือบด้าน, แบบม้วน แกน 3 นิ้ว"></form>
+<fieldset class="fmt"><legend>รูปแบบงาน</legend>
+<label class="rd"><input type="radio" name="fmt" value="แบบม้วน"> แบบม้วน</label>
+<label class="rd"><input type="radio" name="fmt" value="แบบแผ่น"> แบบแผ่น</label>
+<label class="rd"><input type="radio" name="fmt" value="ยังไม่แน่ใจ ให้ทีมแนะนำ" checked> ยังไม่แน่ใจ ให้ทีมแนะนำ</label></fieldset>
+<div class="fsub" id="rollf" hidden><p class="opt">ไม่ทราบ เว้นว่างได้ ทีมงานจะแนะนำให้</p>
+<label for="perroll">จำนวนดวงต่อม้วน</label><input id="perroll" type="number" min="1" step="1" inputmode="numeric" placeholder="เช่น 500, 1000">
+<label for="core">ขนาดแกน</label><select id="core"><option value="">ไม่ทราบ</option><option>1 นิ้ว</option><option>1.5 นิ้ว</option><option>3 นิ้ว</option></select>
+<label for="apply">วิธีติด</label><select id="apply"><option value="">ไม่ทราบ</option><option>ติดด้วยมือ</option><option>ติดด้วยเครื่อง</option></select></div>
+<div class="fsub" id="sheetf" hidden><p class="opt">ไม่ทราบ เว้นว่างได้ ทีมงานจะแนะนำให้</p>
+<label for="persheet">จำนวนดวงต่อแผ่น</label><input id="persheet" type="number" min="1" step="1" inputmode="numeric" placeholder="เช่น 12, 24"></div>
+<label for="note">หมายเหตุ</label><input id="note" placeholder="เช่น ต้องการเคลือบด้าน, ปั๊มฟอยล์ทอง"></form>
 <div class="sum" id="sum"></div>
 <button class="btn r" id="send">ส่งสเปกขอราคาผ่าน Line</button> <button class="btn" id="again">คัดลอกอีกครั้ง</button>
 <p class="msg" id="cm"></p><p>ระบบจะคัดลอกสเปกและเปิด Line OA ให้ กรุณากดวางข้อความในแชทเพื่อส่งให้แอดมิน พร้อมส่งไฟล์ artwork ของคุณมาด้วย (ทางเราไม่รับออกแบบ) เราจะทำแบบให้ยืนยันก่อนผลิต</p>

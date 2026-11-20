@@ -368,3 +368,12 @@ html:not(.offset-on) [data-offset]{display:none!important}
 @media(max-width:1100px){.offset-on .qbs{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:760px){.offset-on .qbs{grid-template-columns:1fr}}
 .ph-img{display:grid;place-items:center;aspect-ratio:16/10;border:2px dashed #C7312F;border-radius:14px;color:#5B6573;font-size:15px;background:#F8F9FA}
+
+/* ฟอร์มขอราคา: รูปแบบงาน */
+.fmt{border:0;padding:0;margin:18px 0 0}.fmt legend{font-weight:600;margin-bottom:6px;padding:0}
+.fmt .rd{display:inline-flex;align-items:center;gap:6px;margin:0 18px 6px 0;font-weight:400;cursor:pointer}
+.fmt .rd input{width:18px;height:18px;margin:0;accent-color:#C7312F}
+.fsub{margin-top:10px;padding:12px 16px 16px;border-left:3px solid #3EA84E;background:#F8F9FA;border-radius:0 10px 10px 0}
+.fsub .opt{margin:0 0 4px;font-size:13px;color:#5B6573}
+.fsub label:first-of-type{margin-top:6px}
+.fsub[hidden]{display:none}

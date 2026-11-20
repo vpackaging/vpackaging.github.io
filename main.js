@@ -80,9 +80,12 @@ var f=document.getElementById('spec');if(f){
  function fill(id,a){$(id).innerHTML=a.map(function(x){return '<option>'+x+'</option>'}).join('')}
  fill('shape',CFG.shapes);fillg('mat',CFG.materials);fill('ql',CFG.qtys);
  function txt(){var g=function(k){return $(k).value};
-  return 'สอบถามราคาสติกเกอร์ | รูปทรง: '+g('shape')+' | วัสดุ: '+g('mat')+' | ขนาด: '+(g('w')||'-')+' x '+(g('h')||'-')+' มม. | จำนวน: '+(g('qty')?Number(g('qty')).toLocaleString('en-US'):'-')+' ชิ้น | หมายเหตุ: '+(g('note')||'-')}
- function show(){$('sum').textContent=txt()}
- f.oninput=show;show();
+  var n=function(v){return Number(v).toLocaleString('en-US')},fm=(f.querySelector('input[name=fmt]:checked')||{}).value||'-',x='';
+  if(fm=='แบบม้วน'){if(g('perroll'))x+=' | ดวงต่อม้วน: '+n(g('perroll'));if(g('core'))x+=' | แกน: '+g('core');if(g('apply'))x+=' | วิธีติด: '+g('apply')}
+  if(fm=='แบบแผ่น'&&g('persheet'))x+=' | ดวงต่อแผ่น: '+n(g('persheet'));
+  return 'สอบถามราคาสติกเกอร์ | รูปทรง: '+g('shape')+' | วัสดุ: '+g('mat')+' | ขนาด: '+(g('w')||'-')+' x '+(g('h')||'-')+' มม. | จำนวน: '+(g('qty')?n(g('qty')):'-')+' ชิ้น | รูปแบบ: '+fm+x+' | หมายเหตุ: '+(g('note')||'-')}
+ function show(){var fm=(f.querySelector('input[name=fmt]:checked')||{}).value;$('rollf').hidden=fm!='แบบม้วน';$('sheetf').hidden=fm!='แบบแผ่น';$('sum').textContent=txt()}
+ f.oninput=show;f.onchange=show;show();
  function copy(t){if(navigator.clipboard&&window.isSecureContext)return navigator.clipboard.writeText(t).catch(function(){return legacy(t)});return legacy(t)}
  function legacy(t){return new Promise(function(ok,no){var a=document.createElement('textarea');a.value=t;a.setAttribute('readonly','');a.style.position='fixed';a.style.opacity='0';document.body.appendChild(a);a.select();try{document.execCommand('copy')?ok():no()}catch(e){no()}a.remove()})}
  function done(okk){$('cm').textContent=okk?'คัดลอกสเปกแล้ว กดวางในแชท Line ได้เลย':'คัดลอกอัตโนมัติไม่ได้ กรุณาคัดลอกข้อความสรุปด้านบนเอง'}
