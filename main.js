@@ -26,7 +26,7 @@ var CFG={
  ['ไม่แน่ใจ',['ไม่แน่ใจ ให้แอดมินแนะนำ']]],
  qtys:['100','500','1000','5000','10000']
 };
-var S=[['label-roll.html','พิมพ์ฉลากม้วน (งานเหมา)'],['digital.html','พิมพ์ดิจิทัล'],['stamping.html','งานปั๊ม (รับงานนอก)']];
+var S=[['label-roll.html','พิมพ์ฉลากม้วน (งานเหมา)'],['digital.html','พิมพ์ดิจิทัล'],['stamping.html','งานปั๊ม (รับงานนอก)'],['blank-labels.html','ฉลากเปล่า (ปั๊มเปล่า)']];
 var P=[['index.html','หน้าแรก'],['about.html','เกี่ยวกับเรา'],['services.html','บริการ'],['machinery.html','เครื่องจักร'],['portfolio.html','ผลงาน'],['guide.html','คู่มือวัสดุ'],['quote.html','ขอราคา'],['contact.html','ติดต่อเรา']];
 
 /* ===== Google Analytics + นับคลิกปุ่มโทร/Line (ทำงานเมื่อใส่ gaId ด้านบน) ===== */

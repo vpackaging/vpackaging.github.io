@@ -377,3 +377,23 @@ html:not(.offset-on) [data-offset]{display:none!important}
 .fsub .opt{margin:0 0 4px;font-size:13px;color:#5B6573}
 .fsub label:first-of-type{margin-top:6px}
 .fsub[hidden]{display:none}
+
+/* หน้าฉลากเปล่า */
+.bl-pts{list-style:none;padding:0;margin:14px 0 18px}.bl-pts li{position:relative;padding-left:22px;margin:6px 0}
+.bl-pts li::before{content:'';position:absolute;left:0;top:.55em;width:10px;height:10px;border-radius:3px;border:2px dashed #C7312F}
+.bl-grid{grid-template-columns:repeat(4,1fr)}
+@media(max-width:900px){.bl-grid{grid-template-columns:1fr 1fr}}@media(max-width:560px){.bl-grid{grid-template-columns:1fr}}
+.bl-tools{display:flex;align-items:center;gap:14px;margin:16px 0 10px;flex-wrap:wrap}
+.bl-tools input{flex:1;min-width:220px;max-width:380px;padding:10px 14px;border:1px solid #D7DCE2;border-radius:10px;font:inherit}
+.bl-tools span{font-size:14px;color:#5B6573}
+.bl-wrap{overflow-x:auto;border:1px solid #E3E7EC;border-radius:12px}
+.bl-tb{width:100%;border-collapse:collapse;font-size:15px;min-width:520px}
+.bl-tb th{background:#252F3F;color:#fff;text-align:left;font-weight:600;padding:10px 14px}
+.bl-tb td{padding:8px 14px;border-top:1px solid #EDF0F3;vertical-align:middle}
+.bl-tb tbody tr:nth-child(even){background:#F8F9FA}.bl-tb td:last-child{text-align:right}
+.bl-tb .none{text-align:left!important;color:#5B6573;padding:18px 14px}
+.btn.sm{padding:6px 14px;font-size:14px;min-height:0}
+.bl-ex{grid-template-columns:repeat(3,1fr)}.bl-ex figure{margin:0}
+.bl-ex img{width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:12px;display:block}
+.bl-ex figcaption{font-size:14px;color:#5B6573;margin-top:10px;line-height:1.55}.bl-ex figcaption b{display:block;color:#252F3F;font-size:15px}
+@media(max-width:800px){.bl-ex{grid-template-columns:1fr}}
